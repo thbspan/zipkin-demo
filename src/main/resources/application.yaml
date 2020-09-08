@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: zipkin-demo-mvc
+  datasource:
+    url: jdbc:mysql://127.0.0.1/test?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+    driver-class-name: org.gjt.mm.mysql.Driver
+    username: root
+    password: 123456
+    hikari:
+      data-source-properties:
+        statementInterceptors: brave.mysql.TracingStatementInterceptor
+        zipkinServiceName: ${spring.application.name}
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+    timeout: 5000
+    jedis:
+      pool:
+        max-wait: 5000
+        min-idle: 1
+        max-idle: 10
+        max-active: 1000
