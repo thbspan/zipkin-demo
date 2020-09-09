@@ -103,10 +103,14 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
         </dependency>
+        <!-- 支持httpclient -->
+        <!-- brave已经支持的组件地址 https://github.com/openzipkin/brave/tree/master/instrumentation -->
+        <!-- 如果没有找到可以到 opentracing-contrib（https://github.com/opentracing-contrib/）项目中看看 -->
         <dependency>
             <groupId>io.zipkin.brave</groupId>
             <artifactId>brave-instrumentation-httpclient</artifactId>
         </dependency>
+        <!-- 支持Spring RestTemplate -->
         <dependency>
             <groupId>io.zipkin.brave</groupId>
             <artifactId>brave-instrumentation-spring-web</artifactId>

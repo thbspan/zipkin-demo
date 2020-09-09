@@ -35,11 +35,13 @@ public class ZipkinConfiguration {
 
     @Bean
     public Sender sender() {
+        // Sender 采用HTTP的方式收集
         return OkHttpSender.create("http://127.0.0.1:9411/api/v2/spans");
     }
 
     @Bean
     public AsyncReporter<Span> spanReporter() {
+        // 异步的Reporter
         return AsyncReporter.create(sender());
     }
 
@@ -67,6 +69,7 @@ public class ZipkinConfiguration {
 
     @Bean
     public Filter tracingFilter(HttpTracing httpTracing) {
+        // 拦截web请求，记录请求的链路信息
         return TracingFilter.create(httpTracing);
     }
 
